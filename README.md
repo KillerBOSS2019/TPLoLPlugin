@@ -19,7 +19,7 @@ Download link for [TouchPortal](https://www.Touch-Portal.com)
 # Library i've used 
 I am coding in Python 3.8.6
 Libraries:
-urllib3
-json
-threading
+urllib3,
+json,
+threading,
 time
