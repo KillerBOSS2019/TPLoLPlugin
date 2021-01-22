@@ -22,4 +22,8 @@ Libraries:
 urllib3,
 json,
 threading,
-time
+time,
+base64,
+socket,
+os,
+psutil
