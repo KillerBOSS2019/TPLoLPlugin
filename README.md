@@ -2,7 +2,7 @@
 This Plugin is made for TouchPortal to intergrade LoL
 
 # Installation
-NOTE: This Only Support Windows for now ill add Mac version once v1 comes out
+NOTE: This Only Support Windows
 To Install this download Win-TPLoLPlugin.tpp if your on Windows
 go to TouchPortal and import the plugin & Reboot TP again
 Now you have nothing to do just setup your page :D & Play
