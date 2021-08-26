@@ -1,0 +1,1486 @@
+{
+  "sdk": 3,
+  "version": 100,
+  "name": "League of Legends",
+  "id": "TP.Plugin.LoLPlugin",
+  "configuration": {
+    "colorDark": "#222423",
+    "colorLight": "#020202"
+  },
+  "categories": [
+    {
+      "id": "Main",
+      "name": "League Of Legends",
+      "actions": [
+        {
+          "id": "KillerBOSS.Plugin.LoLPlugin.actions.PutUserinQueue",
+          "name": "LoL: Put User in Queue",
+          "prefix": "plugin",
+          "type": "communicate",
+          "tryInline": true,
+          "format": "Put User in {$KillerBOSS.Plugin.LolPlugin.actions.PutUserinQueue.Modes$} Queue",
+          "data": [
+            {
+              "id": "KillerBOSS.Plugin.LolPlugin.actions.PutUserinQueue.Modes",
+              "type": "choice",
+              "label": "choice",
+			        "default": "Summoner's Rift 5v5 (Blind PICK)",
+              "valueChoices": 
+              ["Summoner's Rift 5v5 (Blind PICK)",
+				      "Summoner's Rift 5v5 (Draft PICK)",
+				      "Summoner's Rift 5v5 (Ranked SOLO/DUO)",
+				      "Summoner's Rift 5v5 (Ranked FLEX)",
+				      "ARAM 5v5"]
+            }
+          ]
+        },
+        {
+          "id": "KillerBOSS.Plugin.LoLPlugin.actions.SelectRole",
+          "name": "LoL: Select 2 Roles",
+          "prefix": "plugin",
+          "type": "communicate",
+          "tryInline": true,
+          "format": "Select {$KillerBOSS.Plugin.LoLPlugin.actions.SelectRole.Primary$} as Primary and Select {$KillerBOSS.Plugin.LoLPlugin.actions.SelectRole.Secondary$} as Secondary",
+          "data": [
+            {
+              "id": "KillerBOSS.Plugin.LoLPlugin.actions.SelectRole.Primary",
+              "type": "choice",
+              "label": "choice",
+			        "default": "FILL",
+              "valueChoices": [
+                  "FILL",
+                  "TOP",
+                  "JUNGLE",
+                  "MIDDLE",
+                  "BOTTOM",
+                  "SUPPORT"
+			          ]
+            },
+            {
+              "id": "KillerBOSS.Plugin.LoLPlugin.actions.SelectRole.Secondary",
+              "type": "choice",
+              "label": "choice",
+			        "default": "FILL",
+              "valueChoices": [
+			            "FILL",
+                  "TOP",
+                  "JUNGLE",
+                  "MIDDLE",
+                  "BOTTOM",
+                  "SUPPORT"
+			          ]
+            }
+          ]
+        },
+        {
+          "id": "KillerBOSS.Plugin.LoLPlugin.actions.startgame",
+          "name": "LoL: Start a Match",
+          "prefix": "plugin",
+          "type": "communicate",
+          "tryInline": true,
+          "format": "Start Game"
+        },
+        {
+          "id": "LoLPlugin.actions.CancelQueue",
+          "prefix": "Plugin",
+          "name": "LoL: Cancel Queue",
+          "type": "communicate"
+        },
+        {
+          "id": "LoLPlugin.actions.QueueResponses",
+          "name": "LoL: Queue input",
+          "prefix": "plugin",
+          "type": "communicate",
+          "tryInline": true,
+          "format": "LoL: {$LoLPlugin.actions.QueueResponses.Input$} Match",
+          "data": [
+			      {
+              "id": "LoLPlugin.actions.QueueResponses.Input",
+              "type": "choice",
+              "label": "choice",
+			        "default": "True",
+              "valueChoices": [
+			          "Accept",
+				        "Decline"
+			        ]
+            }
+          ]
+        },
+        {
+          "id": "KillerBOSS.Plugin.LoLPlugin.actions.matchMaking.SelectSpell1&2",
+          "name": "LoL: Match Making",
+          "prefix": "plugin",
+          "type": "communicate",
+          "tryInline": true,
+          "format": "LoL: Select D with Spell{$KillerBOSS.Plugin.LolPlugin.actions.matchMaking.SelectSpell1&2.Spell1$} and F with Spell{$KillerBOSS.Plugin.LolPlugin.actions.matchMaking.SelectSpell1&2.Spell2$}",
+          "data": [
+            {
+              "id": "KillerBOSS.Plugin.LolPlugin.actions.matchMaking.SelectSpell1&2.Spell1",
+              "type": "choice",
+              "label": "choice",
+			        "default": "Barrier",
+              "valueChoices": [
+			          "Barrier",
+				        "Cleanse",
+				        "Ignite",
+				        "Exhaust",
+				        "Flash",
+				        "Ghost",
+				        "Heal",
+				        "Clarity",
+				        "Smite",
+				        "Teleport"
+			        ]
+            },
+            {
+              "id": "KillerBOSS.Plugin.LolPlugin.actions.matchMaking.SelectSpell1&2.Spell2",
+              "type": "choice",
+              "label": "choice",
+			        "default": "Barrier",
+              "valueChoices": [
+			          "Barrier",
+				        "Cleanse",
+				        "Ignite",
+				        "Exhaust",
+				        "Flash",
+				        "Ghost",
+				        "Heal",
+				        "Clarity",
+				        "Smite",
+				        "Teleport"
+			        ]
+            }
+          ]
+        },
+        {
+          "id": "KillerBOSS.Plugin.LoLPlugin.actions.MakeRunes",
+          "prefix": "LoL",
+          "name": "LoL Create Rune",
+          "description": "This allows you to create a rune",
+          "type": "communicate",
+          "tryInline": "true",
+          "format": "Rune Create name:{$KillerBOSS.Plugin.LoLPlugin.actions.MakeRunes.Name$} Rune String {$KillerBOSS.Plugin.LoLPlugin.actions.MakeRunes.CreateRune$}",
+          "data": [
+            {
+              "id": "KillerBOSS.Plugin.LoLPlugin.actions.MakeRunes.Name",
+              "type": "text",
+              "label": "Rune Name",
+              "default": "LoL Rune Page 1"
+            },
+            {
+              "id": "KillerBOSS.Plugin.LoLPlugin.actions.MakeRunes.CreateRune",
+              "type": "text",
+              "label": "Rune",
+              "default": "R3123S102111"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id":"KillerBOSS.TP.Plugins.LoLPlugin.Event.EventName",
+          "name":"on Event Name",
+          "format":"When Event name is $val",
+          "type":"communicate",
+          "valueType":"choice",
+          "valueChoices": [
+            "GameStart",
+            "GameEnd",
+            "MinionsSpawning",
+            "ChampionKill",
+            "FirstBlood",
+            "FirstBrick",
+            "TurretKilled",
+            "InhibKilled",
+            "HeraldKill",
+            "BaronKill",
+            "DragonKill",
+            "InhibRespawningSoon",
+            "InhibRespawned",
+            "Multikill",
+            "Ace"
+          ],
+          "valueStateId":"KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.EventName"
+        },
+        {
+          "id":"KillerBOSS.TP.Plugins.LoLPlugin.Event.RuneTree1",
+          "name":"When Rune 1 is",
+          "format":"When Rune Tree 1 is $val",
+          "type":"communicate",
+          "valueType":"choice",
+          "valueChoices": [
+            "Domination",
+            "Inspiration",
+            "Precision",
+            "Resolve",
+            "Sorcery"
+          ],
+          "valueStateId":"KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.primaryRuneTree.Name"
+        },
+        {
+          "id":"KillerBOSS.TP.Plugins.LoLPlugin.Event.RuneTree1",
+          "name":"When Rune Tree 2 is",
+          "format":"When Rune Tree 2 is $val",
+          "type":"communicate",
+          "valueType":"choice",
+          "valueChoices": [
+            "Domination",
+            "Inspiration",
+            "Precision",
+            "Resolve",
+            "Sorcery"
+          ],
+          "valueStateId":"KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.secondaryRuneTree.Name"
+        }
+      ],
+      "states": [
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------Summoner Info-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.DisplayName",
+          "type": "text",
+          "desc": "LCU: Display Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.DisplayIcon",
+          "type": "text",
+          "desc": "LCU: Display Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.CurrentLevel",
+          "type": "text",
+          "desc": "LCU: Current Level",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.numberofRolls",
+          "type": "text",
+          "desc": "LCU: Current number of reRolls",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.precentCompleteNextLevel",
+          "type": "text",
+          "desc": "LCU: Precent Complete for next Level",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------Match Making-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.estmatedQueueTime",
+          "type": "text",
+          "desc": "LCU: Estimated Queue Time",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.TimeinQueue",
+          "type": "text",
+          "desc": "LCU: Time in queue",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.UserResponses",
+          "type": "text",
+          "desc": "LCU: User response",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.States",
+          "type": "text",
+          "desc": "LCU: Matchmaking States",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------Champion Select-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.1.Name",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 1 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.2.Name",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 2 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.3.Name",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 3 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.4.Name",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 4 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.5.Name",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 5 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.1.Icon",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 1 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.2.Icon",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 2 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.3.Icon",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 3 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.4.Icon",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 4 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.own.BannedChamp.5.Icon",
+          "type": "text",
+          "desc": "LCU: Own Team Champion ban 5 Icon",
+          "default": "None"
+        },
+
+        
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.1.Name",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 1 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.2.Name",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 2 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.3.Name",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 3 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.4.Name",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 4 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.5.Name",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 5 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.1.Icon",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 1 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.2.Icon",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 2 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.3.Icon",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 3 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.4.Icon",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 4 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.matchmaking.Their.BannedChamp.5.Icon",
+          "type": "text",
+          "desc": "LCU: Opponent Team Champion ban 5 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Runes-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.primaryRuneTree.Name",
+          "type": "text",
+          "desc": "In-Game: Primary Rune Tree Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.primaryRuneTree.Icon",
+          "type": "text",
+          "desc": "In-Game: Primary Rune Tree Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.secondaryRuneTree.Name",
+          "type": "text",
+          "desc": "In-Game: SecondaryRuneTree Rune Tree Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.secondaryRuneTree.Icon",
+          "type": "text",
+          "desc": "In-Game: Secondary Rune Tree Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.KeyStone.Name",
+          "type": "text",
+          "desc": "In-Game: Rune Keystone name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.KeyStone.Icon",
+          "type": "text",
+          "desc": "In-Game: Rune Keystone Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.KeyStone.shortDesc",
+          "type": "text",
+          "desc": "In-Game: Keystone short description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set1.Name",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 1 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set1.Icon",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 1 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set1.shortDesc",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 1 short description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set2.Name",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 2 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set2.Icon",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 2 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set2.shortDesc",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 2 short description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set3.Name",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 3 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set3.Icon",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 3 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.PrimaryTree.set3.shortDesc",
+          "type": "text",
+          "desc": "In-Game: Primary Tree item 3 short description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.SecondaryTree.set1.Name",
+          "type": "text",
+          "desc": "In-Game: Secondary Tree item 1 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.SecondaryTree.set1.Icon",
+          "type": "text",
+          "desc": "In-Game: Secondary Tree item 1 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.SecondaryTree.set1.shortDesc",
+          "type": "text",
+          "desc": "In-Game: Secondary Tree item 1 short description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.SecondaryTree.set2.Name",
+          "type": "text",
+          "desc": "In-Game: Secondary Tree item 2 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.SecondaryTree.set2.Icon",
+          "type": "text",
+          "desc": "In-Game: Secondary Tree item 2 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Runes.SecondaryTree.set2.shortDesc",
+          "type": "text",
+          "desc": "In-Game: Secondary Tree item 2 short description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Events-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.EventName",
+          "type": "text",
+          "desc": "In-Game: Latest event Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.DragonType",
+          "type": "text",
+          "desc": "In-Game: Event Dragon Kill Type",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.isDragonStolen",
+          "type": "text",
+          "desc": "In-Game: Is Last Dragon Stolen?",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.LastDragon.Killer",
+          "type": "text",
+          "desc": "In-Game: Last Dragon Killer Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.LastDragon.KilledTime",
+          "type": "text",
+          "desc": "In-Game: Last Dragon Killed Time",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.isHeraldStolen",
+          "type": "text",
+          "desc": "In-Game: Is Last Herald Stolen?",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.LastHerald.Killer",
+          "type": "text",
+          "desc": "In-Game: Last Herald Killer Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.LastHerald.KilledTime",
+          "type": "text",
+          "desc": "In-Game: Last Herald Killed Time",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.isBaronStolen",
+          "type": "text",
+          "desc": "In-Game: Is Last Baron Stolen?",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.LastBaron.Killer",
+          "type": "text",
+          "desc": "In-Game: Last Baron Killer Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.LastBaron.KilledTime",
+          "type": "text",
+          "desc": "In-Game: Last Baron Killed Time",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.Ace",
+          "type": "text",
+          "desc": "In-Game: Acing Team",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.Acer",
+          "type": "text",
+          "desc": "In-Game: Acer Name",
+          "default": "None"
+        },
+        
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.TurretKilled",
+          "type": "text",
+          "desc": "In-Game: Turret/Inhib Killed Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.TurretKilled.Name",
+          "type": "text",
+          "desc": "In-Game: Turret/Inhib Killer Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Events.LastEventTime",
+          "type": "text",
+          "desc": "In-Game: Latest event Time",
+          "default": "00:00"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Spells-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Spell1.Name",
+          "type": "text",
+          "desc": "In-Game: Summoner Spell One Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Spell1.description",
+          "type": "text",
+          "desc": "In-Game: Summoner Spell One Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Spell1.Icon",
+          "type": "text",
+          "desc": "In-Game: Summoner Spell One Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Spell2.Name",
+          "type": "text",
+          "desc": "In-Game: Summoner Spell Two Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Spell2.description",
+          "type": "text",
+          "desc": "In-Game: Summoner Spell Two Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Spell2.Icon",
+          "type": "text",
+          "desc": "In-Game: Summoner Spell Two Icon",
+          "default": "None"
+        },
+
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Game Data-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.GameData.gameMode",
+          "type": "text",
+          "desc": "In-Game: Current gameMode",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.GameData.gameTime",
+          "type": "text",
+          "desc": "In-Game: Current GameTime",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.GameData.MapName",
+          "type": "text",
+          "desc": "In-Game: Current Map Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.GameData.MapImage",
+          "type": "text",
+          "desc": "In-Game: Current Map Image",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Scoreboard-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalBlueTeam.Kill",
+          "type": "text",
+          "desc": "In-Game: Total Blue Team Kill",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalBlueTeam.deaths",
+          "type": "text",
+          "desc": "In-Game: Total Blue Team deaths",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalBlueTeam.assists",
+          "type": "text",
+          "desc": "In-Game: Total Blue Team assists",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalBlueTeam.wardScore",
+          "type": "text",
+          "desc": "In-Game: Total Blue Team wardScore",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalBlueTeam.CS",
+          "type": "text",
+          "desc": "In-Game: Total Blue Team creepScore",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalRedTeam.Kill",
+          "type": "text",
+          "desc": "In-Game: Total Red Team Kill",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalRedTeam.deaths",
+          "type": "text",
+          "desc": "In-Game: Total Red Team deaths",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalRedTeam.assists",
+          "type": "text",
+          "desc": "In-Game: Total Red Team assists",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalRedTeam.wardScore",
+          "type": "text",
+          "desc": "In-Game: Total Red Team wardScore",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.TotalRedTeam.CS",
+          "type": "text",
+          "desc": "In-Game: Total Red Team creepScore",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.Myown.Kill",
+          "type": "text",
+          "desc": "In-Game: My own Kill score",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.Myown.deaths",
+          "type": "text",
+          "desc": "In-Game: My own deaths score",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.Myown.assists",
+          "type": "text",
+          "desc": "In-Game: My own assists score",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.Myown.wardScore",
+          "type": "text",
+          "desc": "In-Game: My own Wards Score",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ScoreBoard.Myown.CS",
+          "type": "text",
+          "desc": "In-Game: My own creep Score",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Champon Stats-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.AbilityPower",
+          "type": "text",
+          "desc": "In-Game: Champion Ability power",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.Armor",
+          "type": "text",
+          "desc": "In-Game: Champion Armor",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.ArmorPenetrationPercent",
+          "type": "text",
+          "desc": "In-Game: Champion Armor Penetration Percent",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.attackDamage",
+          "type": "text",
+          "desc": "In-Game: Champion Attack Damage",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.attackRange",
+          "type": "text",
+          "desc": "In-Game: Champion AttackRange",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.attackSpeed",
+          "type": "text",
+          "desc": "In-Game: Champion Attack Speed",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.bonusArmorPenetrationPercent",
+          "type": "text",
+          "desc": "In-Game: Champion bonusArmorPenetrationPercent",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.bonusMagicPenetrationPercent",
+          "type": "text",
+          "desc": "In-Game: Champion bonusMagicPenetrationPercent",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.critChance",
+          "type": "text",
+          "desc": "In-Game: Champion critChance",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.critDamage",
+          "type": "text",
+          "desc": "In-Game: Champion critDamage",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.currentHealth",
+          "type": "text",
+          "desc": "In-Game: Champion currentHealth",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.healthRegenRate",
+          "type": "text",
+          "desc": "In-Game: Champion healthRegenRate",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.lifeSteal",
+          "type": "text",
+          "desc": "In-Game: Champion lifeSteal",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.magicLethality",
+          "type": "text",
+          "desc": "In-Game: Champion magicLethality",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.magicPenetrationPercent",
+          "type": "text",
+          "desc": "In-Game: Champion magicPenetrationPercent",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.magicResist",
+          "type": "text",
+          "desc": "In-Game: Champion magicResist",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.maxHealth",
+          "type": "text",
+          "desc": "In-Game: Champion maxHealth",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.moveSpeed",
+          "type": "text",
+          "desc": "In-Game: Champion moveSpeed",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.physicalLethality",
+          "type": "text",
+          "desc": "In-Game: Champion physicalLethality",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.resourceMax",
+          "type": "text",
+          "desc": "In-Game: Champion resourceMax",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.resourceRegenRate",
+          "type": "text",
+          "desc": "In-Game: Champion resourceRegenRate",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.resourceType",
+          "type": "text",
+          "desc": "In-Game: Champion resourceType",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.resourceValue",
+          "type": "text",
+          "desc": "In-Game: Champion resourceValue",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.spellVamp",
+          "type": "text",
+          "desc": "In-Game: Champion spellVamp",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampStats.tenacity",
+          "type": "text",
+          "desc": "In-Game: Champion tenacity",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Champion Abilities-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Q.Name",
+          "type": "text",
+          "desc": "In-Game: Q Ability Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Q.Level",
+          "type": "text",
+          "desc": "In-Game: Q Ability Level",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Q.Icon",
+          "type": "text",
+          "desc": "In-Game: Q Ability Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Q.Cost",
+          "type": "text",
+          "desc": "In-Game: Q Ability Cost",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Q.Cooldown",
+          "type": "text",
+          "desc": "In-Game: Q Ability Cooldown",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Q.Desc",
+          "type": "text",
+          "desc": "In-Game: Q Ability Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.W.Name",
+          "type": "text",
+          "desc": "In-Game: W Ability Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.W.Level",
+          "type": "text",
+          "desc": "In-Game: W Ability Level",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.W.Icon",
+          "type": "text",
+          "desc": "In-Game: W Ability Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.W.Cost",
+          "type": "text",
+          "desc": "In-Game: W Ability Cost",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.W.Cooldown",
+          "type": "text",
+          "desc": "In-Game: W Ability Cooldown",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.W.Desc",
+          "type": "text",
+          "desc": "In-Game: W Ability Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.E.Name",
+          "type": "text",
+          "desc": "In-Game: E Ability Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.E.Level",
+          "type": "text",
+          "desc": "In-Game: E Ability Level",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.E.Icon",
+          "type": "text",
+          "desc": "In-Game: E Ability Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.E.Cost",
+          "type": "text",
+          "desc": "In-Game: E Ability Cost",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.E.Cooldown",
+          "type": "text",
+          "desc": "In-Game: E Ability Cooldown",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.E.Desc",
+          "type": "text",
+          "desc": "In-Game: E Ability Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.R.Name",
+          "type": "text",
+          "desc": "In-Game: R Ability Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.R.Level",
+          "type": "text",
+          "desc": "In-Game: R Ability Level",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.R.Icon",
+          "type": "text",
+          "desc": "In-Game: R Ability Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.R.Cost",
+          "type": "text",
+          "desc": "In-Game: R Ability Cost",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.R.Cooldown",
+          "type": "text",
+          "desc": "In-Game: Q Ability Cooldown",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.R.Desc",
+          "type": "text",
+          "desc": "In-Game: R Ability Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Passive.Name",
+          "type": "text",
+          "desc": "In-Game: Passive Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Passive.Desc",
+          "type": "text",
+          "desc": "In-Game: Passive Desc",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.ChampAbilities.Passive.Image",
+          "type": "text",
+          "desc": "In-Game: Passive Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Items-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.1.Name",
+          "type": "text",
+          "desc": "In-Game: Item Slot 1 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.1.Desc",
+          "type": "text",
+          "desc": "In-Game: Item Slot 1 Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.1.Icon",
+          "type": "text",
+          "desc": "In-Game: Item Slot 1 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.1.Price",
+          "type": "text",
+          "desc": "In-Game: Item Slot 1 Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.1.SellPrice",
+          "type": "text",
+          "desc": "In-Game: Item Slot 1 Sell Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.2.Name",
+          "type": "text",
+          "desc": "In-Game: Item Slot 2 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.2.Desc",
+          "type": "text",
+          "desc": "In-Game: Item Slot 2 Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.2.Icon",
+          "type": "text",
+          "desc": "In-Game: Item Slot 2 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.2.Price",
+          "type": "text",
+          "desc": "In-Game: Item Slot 2 Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.2.SellPrice",
+          "type": "text",
+          "desc": "In-Game: Item Slot 2 Sell Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.3.Name",
+          "type": "text",
+          "desc": "In-Game: Item Slot 3 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.3.Desc",
+          "type": "text",
+          "desc": "In-Game: Item Slot 3 Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.3.Icon",
+          "type": "text",
+          "desc": "In-Game: Item Slot 3 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.3.Price",
+          "type": "text",
+          "desc": "In-Game: Item Slot 3 Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.3.SellPrice",
+          "type": "text",
+          "desc": "In-Game: Item Slot 3 Sell Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.4.Name",
+          "type": "text",
+          "desc": "In-Game: Item Slot 4 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.4.Desc",
+          "type": "text",
+          "desc": "In-Game: Item Slot 4 Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.4.Icon",
+          "type": "text",
+          "desc": "In-Game: Item Slot 4 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.4.Price",
+          "type": "text",
+          "desc": "In-Game: Item Slot 4 Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.4.SellPrice",
+          "type": "text",
+          "desc": "In-Game: Item Slot 4 Sell Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.5.Name",
+          "type": "text",
+          "desc": "In-Game: Item Slot 5 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.5.Desc",
+          "type": "text",
+          "desc": "In-Game: Item Slot 5 Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.5.Icon",
+          "type": "text",
+          "desc": "In-Game: Item Slot 5 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.5.Price",
+          "type": "text",
+          "desc": "In-Game: Item Slot 5 Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.5.SellPrice",
+          "type": "text",
+          "desc": "In-Game: Item Slot 5 Sell Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.6.Name",
+          "type": "text",
+          "desc": "In-Game: Item Slot 6 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.6.Desc",
+          "type": "text",
+          "desc": "In-Game: Item Slot 6 Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.6.Icon",
+          "type": "text",
+          "desc": "In-Game: Item Slot 6 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.6.Price",
+          "type": "text",
+          "desc": "In-Game: Item Slot 6 Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.6.SellPrice",
+          "type": "text",
+          "desc": "In-Game: Item Slot 6 Sell Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.7.Name",
+          "type": "text",
+          "desc": "In-Game: Item Slot 7 Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.7.Desc",
+          "type": "text",
+          "desc": "In-Game: Item Slot 7 Description",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.7.Icon",
+          "type": "text",
+          "desc": "In-Game: Item Slot 7 Icon",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.7.Price",
+          "type": "text",
+          "desc": "In-Game: Item Slot 7 Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.Ingame.Item.slot.7.SellPrice",
+          "type": "text",
+          "desc": "In-Game: Item Slot 7 Sell Price",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+          "type": "text",
+          "desc": "===-------------In Game Extra Data-------------===",
+          "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.CurrentGold",
+          "type": "text",
+          "desc": "In-Game: Current Gold",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.RespawnTimer",
+          "type": "text",
+          "desc": "In-Game: Respawn Timer",
+          "default": "0"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Champion.Name",
+          "type": "text",
+          "desc": "In-Game: Current User Champion Name",
+          "default": "None"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Champion.Icon",
+          "type": "text",
+          "desc": "In-Game: Current User Champion Icon",
+          "default": "null"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Champion.IconWSkin",
+          "type": "text",
+          "desc": "In-Game: Current User Champion Icon with Skin",
+          "default": "null"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.Champion.CurrentHealthInPercent",
+          "type": "text",
+          "desc": "In-Game: Current User Champion Health (in Percent)",
+          "default": "0"
+        },
+        {
+            "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.None",
+            "type": "text",
+            "desc": "===-------------In Game Objective-------------===",
+            "default": "PlaceHolder"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.RiftHeraldSpawnTimer",
+          "type": "text",
+          "desc": "In-Game: Rift Herald Spawn TImer",
+          "default": "00:00"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.RiftHeraldStatus",
+          "type": "text",
+          "desc": "In-Game: Rift Herald Status",
+          "default": "Unobtainable"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.EDrakeSpawnTimer",
+          "type": "text",
+          "desc": "In-Game: Elemental Drakes Spawn TImer",
+          "default": "00:00"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.EDrakeStatus",
+          "type": "text",
+          "desc": "In-Game: Elemental Drakes Status",
+          "default": "Unobtainable"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.EDrakeSpawnType",
+          "type": "text",
+          "desc": "In-Game: Dragon Spawn Type",
+          "default": "Elemental Dragon"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.BaronSpawnTimer",
+          "type": "text",
+          "desc": "In-Game: Baron Spawn TImer",
+          "default": "00:00"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.BaronStatus",
+          "type": "text",
+          "desc": "In-Game: Baron Status",
+          "default": "Unobtainable"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.BaronBuffTimer",
+          "type": "text",
+          "desc": "In-Game: Baron Buff Timer",
+          "default": "00:00"
+        },
+        {
+          "id": "KillerBOSS.TP.Plugins.LoLPlugin.states.InGame.objective.ElderDragonBuffTimer",
+          "type": "text",
+          "desc": "In-Game: Elder Dragon buff Timer",
+          "default": "00:00"
+        }
+      ]
+    }
+  ]
+}
