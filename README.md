@@ -9,6 +9,10 @@
   - [Suggestion & Bugs](#suggestion--bugs)
 - [Contribute](#contribute)
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/KillerBOSS2019/TPLoLPlugin)
+![GitHub all releases](https://img.shields.io/github/downloads/KillerBOSS2019/TPLoLPlugin/total)
+![GitHub issues](https://img.shields.io/github/issues/KillerBOSS2019/TPLoLPlugin)
+
 ## Installation
 NOTE This Plugin is only made for Windows 10. It is possible for Mac OS user to use this Plugin but I will need some help with it.
 
